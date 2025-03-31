@@ -41,20 +41,24 @@
 
 1. 컴퓨터에서 [MakeCode 편집기](https://makecode.microbit.org/)를 열어요.
 2. "새 프로젝트" 버튼을 눌러요.
-3. 블록을 그림처럼 연결하거나, JavaScript 탭을 누르고 아래 코드를 복사해 붙여넣어요.
+3. 블록을 그림처럼 연결하거나, python 탭을 누르고 아래 코드를 복사해 붙여넣어요.
 
-```javascript
-let motions = 0
-motions = 0
-basic.showNumber(motions)
-input.onButtonPressed(Button.A, function () {
-    motions = 0
-    basic.showNumber(motions)
-})
-input.onGesture(Gesture.Shake, function () {
-    motions += 1
-    basic.showNumber(motions)
-})
+```python
+def on_button_pressed_a():
+    global motion
+    motion = 0
+    basic.show_number(motion)
+input.on_button_pressed(Button.A, on_button_pressed_a)
+
+def on_gesture_shake():
+    global motion
+    motion += 1
+    basic.show_number(motion)
+input.on_gesture(Gesture.SHAKE, on_gesture_shake)
+
+motion = 0
+motion = 0
+basic.show_number(motion)
 ```
 
 4. 프로젝트 이름을 "스마트워치"로 넣고 저장해요.
